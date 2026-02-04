@@ -8,10 +8,15 @@
 </head>
 
 <body>
-  <div class="hearts"></div>
+
+  <div class="background-hearts"></div>
 
   <div class="card">
-    <img id="image" src="images/cat-happy.png" />
+
+    <div class="media">
+      <video id="video" autoplay loop muted playsinline></video>
+      <img id="image" />
+    </div>
 
     <h1 id="title">Will you be my Valentine?</h1>
 
@@ -20,15 +25,9 @@
       <button id="no">No</button>
     </div>
 
-    <p id="message" class="hidden"></p>
-  </div>
+    <p id="message"></p>
 
-  <iframe
-    id="song"
-    class="hidden"
-    src=""
-    allow="autoplay"
-  ></iframe>
+  </div>
 
   <script src="script.js"></script>
 </body>
