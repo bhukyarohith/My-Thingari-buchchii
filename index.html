@@ -9,23 +9,28 @@
 
 <body>
 
-  <div class="background-hearts"></div>
-
   <div class="card">
 
     <div class="media">
-      <video id="video" autoplay loop muted playsinline></video>
+      <video id="video" playsinline muted loop></video>
       <img id="image" />
     </div>
 
-    <h1 id="title">Will you be my Valentine?</h1>
+    <h1 id="title"></h1>
 
     <div class="buttons">
       <button id="yes">Yes</button>
       <button id="no">No</button>
     </div>
 
-    <p id="message"></p>
+    <p id="final-text"></p>
+
+    <!-- Hidden YouTube player -->
+    <iframe
+      id="song"
+      allow="autoplay"
+      frameborder="0">
+    </iframe>
 
   </div>
 
