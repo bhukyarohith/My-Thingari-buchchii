@@ -1,21 +1,14 @@
-const yesBtn = document.getElementById("yes");
-const noBtn = document.getElementById("no");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
 const title = document.getElementById("title");
-const message = document.getElementById("message");
-
 const video = document.getElementById("video");
 const image = document.getElementById("image");
+const finalText = document.getElementById("final-text");
+const song = document.getElementById("song");
 
 let stage = 1;
 
-// Helper functions
-function showVideo(src) {
-  image.style.display = "none";
-  video.style.display = "block";
-  video.src = src;
-  video.play();
-}
-
+// helpers
 function showImage(src) {
   video.pause();
   video.style.display = "none";
@@ -23,84 +16,65 @@ function showImage(src) {
   image.src = src;
 }
 
-function moveNoButton() {
-  const x = Math.random() * (window.innerWidth - 120);
-  const y = Math.random() * (window.innerHeight - 60);
-  noBtn.style.position = "absolute";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+function showVideo(src) {
+  image.style.display = "none";
+  video.style.display = "block";
+  video.src = src;
+  video.play();
 }
 
-// Initial state
-showVideo("images/cat-happy.mp4");
+function moveNo() {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
+  no.style.position = "absolute";
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+}
 
-// NO button logic
-noBtn.onclick = () => {
+// STAGE 1 – eyes
+showImage("images/eyes.png");
+title.textContent = "Hey beautiful, will you be my Valentine?";
+
+// NO
+no.onclick = () => {
   if (stage === 1) {
     stage = 2;
-    title.textContent = "Are you sure?";
     showVideo("images/cat-sad.mp4");
-  } else {
-    moveNoButton();
+    title.textContent =
+      "I'm asking you again my dear bakka papa, will you be my Valentine?";
+  } else if (stage === 2) {
+    moveNo();
   }
 };
 
-// YES button logic
-yesBtn.onclick = () => {
+// YES
+yes.onclick = () => {
   if (stage === 1) {
     stage = 3;
-    title.textContent = "Are you for sure?";
-    showImage("images/eyes.png");
+    showImage("images/cat-flower.png");
+    title.textContent = "Are you sure bangaram?";
+  } else if (stage === 2) {
+    stage = 3;
+    showImage("images/cat-flower.png");
+    title.textContent = "Are you sure little princess?";
   } else if (stage === 3) {
     finalStage();
   }
 };
 
 function finalStage() {
-  yesBtn.remove();
-  noBtn.remove();
+  yes.remove();
+  no.remove();
+
+  showVideo("images/cat-happy.mp4");
 
   title.textContent = "See you on the 14th, My Princess 💖";
-  message.textContent = "NO tap chesi untey nee pani aipoyedhi 😤👊🏻";
-  message.style.display = "block";
+  finalText.textContent =
+    "NO tap chesi untey nee pani aipoyedhi 😤👊🏻";
+  finalText.style.display = "block";
 
-  // Play song from 3:33
-  const iframe = document.createElement("iframe");
-  iframe.src =
-    "https://www.youtube.com/embed/2nbj5UT-1Jc?start=213&autoplay=1";
-  iframe.allow = "autoplay";
-  iframe.style.marginTop = "20px";
-  iframe.style.borderRadius = "12px";
-  iframe.width = "300";
-  iframe.height = "170";
-
-  document.querySelector(".card").appendChild(iframe);
-
-  launchHearts();
+  // YouTube autoplay from 3:33, no controls
+  song.src =
+    "https://www.youtube.com/embed/2nbj5UT-1Jc?start=213&autoplay=1&controls=0&rel=0&showinfo=0";
+  song.style.display = "block";
 }
-
-function launchHearts() {
-  for (let i = 0; i < 20; i++) {
-    const heart = document.createElement("div");
-    heart.innerText = "💖";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "100vh";
-    heart.style.fontSize = "22px";
-    heart.style.animation = "float 3s linear";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 3000);
-  }
-}
-
-// Heart animation
-const style = document.createElement("style");
-style.innerHTML = `
-@keyframes float {
-  to {
-    transform: translateY(-120vh);
-    opacity: 0;
-  }
-}`;
-document.head.appendChild(style);
