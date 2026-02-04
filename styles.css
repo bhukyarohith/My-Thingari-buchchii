@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -11,18 +15,41 @@ body {
   overflow: hidden;
 }
 
-.card {
-  background: white;
-  padding: 40px 30px;
-  width: 420px;
-  border-radius: 26px;
-  text-align: center;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+/* Floating hearts background */
+.background-hearts::before {
+  content: "💖 💕 💘 💞 💓";
+  position: fixed;
+  font-size: 40px;
+  opacity: 0.08;
+  width: 100%;
+  height: 100%;
+  animation: floatBg 20s linear infinite;
 }
 
-img {
-  width: 140px;
+@keyframes floatBg {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+.card {
+  background: white;
+  width: 420px;
+  padding: 40px 30px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+  z-index: 1;
+}
+
+.media video,
+.media img {
+  width: 160px;
+  border-radius: 16px;
   margin-bottom: 20px;
+}
+
+#image {
+  display: none;
 }
 
 h1 {
@@ -53,11 +80,8 @@ button {
   background: #eee;
 }
 
-.hidden {
-  display: none;
-}
-
 #message {
   margin-top: 25px;
   font-size: 18px;
+  display: none;
 }
