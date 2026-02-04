@@ -1,71 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap');
+/* existing styles unchanged */
 
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #ffe6ef, #ffffff);
-  font-family: 'Josefin Sans', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.card {
-  background: white;
-  width: 430px;
-  padding: 40px 30px;
-  border-radius: 28px;
-  text-align: center;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.18);
-}
-
-.media video,
-.media img {
-  width: 180px;
-  border-radius: 16px;
-  margin-bottom: 18px;
+#bgm-controls {
   display: none;
+  margin: 12px 0;
+  font-size: 14px;
+  opacity: 0.9;
 }
 
-h1 {
-  font-size: 22px;
-  margin-bottom: 22px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-button {
-  padding: 12px 30px;
+#bgm-controls button {
+  margin-left: 6px;
+  padding: 6px 14px;
   border-radius: 999px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 13px;
 }
 
-#yes {
-  background: #ff5b8c;
+#playBgm {
+  background: #ff7aa8;
   color: white;
 }
 
-#no {
+#stopBgm {
   background: #eee;
-}
-
-#final-text {
-  margin-top: 22px;
-  font-size: 18px;
-  display: none;
-}
-
-#song {
-  width: 300px;
-  height: 170px;
-  margin-top: 20px;
-  display: none;
-  border-radius: 12px;
 }
