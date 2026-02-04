@@ -2,8 +2,10 @@ const title = document.getElementById("title");
 const subtitle = document.getElementById("subtitle");
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
+
 const video = document.getElementById("video");
 const image = document.getElementById("image");
+
 const noBgm = document.getElementById("noBgm");
 const song = document.getElementById("song");
 
@@ -13,6 +15,7 @@ const stopBgm = document.getElementById("stopBgm");
 
 let stage = 1;
 
+/* helpers */
 function showImage(src) {
   video.pause();
   video.style.display = "none";
@@ -34,22 +37,22 @@ function moveNo() {
 }
 
 /* INIT */
+showImage("assets/eyes-bg.jpg");
 title.textContent = "Hariluhh, will you be my Valentine?";
 subtitle.textContent = "";
-showImage("assets/eyes-bg.jpg");
 
-/* BGM BUTTONS */
+/* BGM CONTROLS */
 playBgm.onclick = () => noBgm.play();
 stopBgm.onclick = () => noBgm.pause();
 
-/* NO BUTTON */
+/* NO CLICK */
 no.onclick = () => {
   if (stage === 1) {
     stage = 2;
+    showVideo("assets/cat-sad.mp4");
     noBgm.play();
     bgmControls.style.display = "block";
 
-    showVideo("assets/cat-sad.mp4");
     title.textContent =
       "I'm asking you again my dear bakka papa, will you be my Valentine?";
     subtitle.textContent = "NO tap cheyyaku papa 😕";
@@ -65,7 +68,7 @@ no.onclick = () => {
   }
 };
 
-/* YES BUTTON */
+/* YES CLICK */
 yes.onclick = () => {
   if (stage < 4) {
     stage = 4;
