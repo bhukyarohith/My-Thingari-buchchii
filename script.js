@@ -1,14 +1,18 @@
+const title = document.getElementById("title");
+const subtitle = document.getElementById("subtitle");
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
-const title = document.getElementById("title");
 const video = document.getElementById("video");
 const image = document.getElementById("image");
-const finalText = document.getElementById("final-text");
+const noBgm = document.getElementById("noBgm");
 const song = document.getElementById("song");
+
+const bgmControls = document.getElementById("bgm-controls");
+const playBgm = document.getElementById("playBgm");
+const stopBgm = document.getElementById("stopBgm");
 
 let stage = 1;
 
-// helpers
 function showImage(src) {
   video.pause();
   video.style.display = "none";
@@ -24,57 +28,67 @@ function showVideo(src) {
 }
 
 function moveNo() {
-  const x = Math.random() * (window.innerWidth - 120);
-  const y = Math.random() * (window.innerHeight - 60);
   no.style.position = "absolute";
-  no.style.left = x + "px";
-  no.style.top = y + "px";
+  no.style.left = Math.random() * (window.innerWidth - 120) + "px";
+  no.style.top = Math.random() * (window.innerHeight - 60) + "px";
 }
 
-// STAGE 1 – eyes
-showImage("images/eyes.png");
-title.textContent = "Hey beautiful, will you be my Valentine?";
+/* INIT */
+title.textContent = "Hariluhh, will you be my Valentine?";
+subtitle.textContent = "";
+showImage("assets/eyes-bg.jpg");
 
-// NO
+/* BGM BUTTONS */
+playBgm.onclick = () => noBgm.play();
+stopBgm.onclick = () => noBgm.pause();
+
+/* NO BUTTON */
 no.onclick = () => {
   if (stage === 1) {
     stage = 2;
-    showVideo("images/cat-sad.mp4");
+    noBgm.play();
+    bgmControls.style.display = "block";
+
+    showVideo("assets/cat-sad.mp4");
     title.textContent =
       "I'm asking you again my dear bakka papa, will you be my Valentine?";
+    subtitle.textContent = "NO tap cheyyaku papa 😕";
+
   } else if (stage === 2) {
+    stage = 3;
+    subtitle.textContent =
+      "baaney extralu 🙄 Yes tap cheyyakapothey maamulgundadhu neeku 😑";
+    moveNo();
+
+  } else {
     moveNo();
   }
 };
 
-// YES
+/* YES BUTTON */
 yes.onclick = () => {
-  if (stage === 1) {
-    stage = 3;
-    showImage("images/cat-flower.png");
-    title.textContent = "Are you sure bangaram?";
-  } else if (stage === 2) {
-    stage = 3;
-    showImage("images/cat-flower.png");
+  if (stage < 4) {
+    stage = 4;
+    bgmControls.style.display = "none";
+    noBgm.pause();
+
+    showImage("assets/cat-flower.png");
     title.textContent = "Are you sure little princess?";
-  } else if (stage === 3) {
-    finalStage();
+    subtitle.textContent =
+      "abba ante no tap chesi untey nenu oppukunta anukunnava 😏😌";
+
+  } else {
+    stage = 5;
+    yes.remove();
+    no.remove();
+    bgmControls.style.display = "none";
+    noBgm.pause();
+
+    showVideo("assets/cat-happy.mp4");
+    song.play();
+
+    title.textContent = "See you on the 14th, My Princess 💖";
+    subtitle.textContent =
+      "NO tap chesi untey nee pani aipoyedhi 😤👊🏻";
   }
 };
-
-function finalStage() {
-  yes.remove();
-  no.remove();
-
-  showVideo("images/cat-happy.mp4");
-
-  title.textContent = "See you on the 14th, My Princess 💖";
-  finalText.textContent =
-    "NO tap chesi untey nee pani aipoyedhi 😤👊🏻";
-  finalText.style.display = "block";
-
-  // YouTube autoplay from 3:33, no controls
-  song.src =
-    "https://www.youtube.com/embed/2nbj5UT-1Jc?start=213&autoplay=1&controls=0&rel=0&showinfo=0";
-  song.style.display = "block";
-}
