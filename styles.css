@@ -1,10 +1,78 @@
-/* existing styles unchanged */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("assets/eyes-bg.jpg") center/cover no-repeat;
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.stage {
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.28);
+  border-radius: 30px;
+  padding: 40px;
+  width: 430px;
+  text-align: center;
+  box-shadow: 0 35px 90px rgba(0,0,0,0.3);
+}
+
+.media video,
+.media img {
+  width: 260px;
+  max-width: 100%;
+  border-radius: 20px;
+  display: none;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 18px 0 8px;
+}
+
+p {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-bottom: 18px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 12px 30px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#yes {
+  background: #ff4f87;
+  color: #fff;
+}
+
+#no {
+  background: #eee;
+}
+
+/* BGM CONTROLS */
 #bgm-controls {
   display: none;
-  margin: 12px 0;
+  margin-bottom: 10px;
   font-size: 14px;
-  opacity: 0.9;
 }
 
 #bgm-controls button {
@@ -23,4 +91,8 @@
 
 #stopBgm {
   background: #eee;
+}
+
+#song {
+  display: none;
 }
