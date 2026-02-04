@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffd1e8, #ffe6f2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Floating hearts */
+.bg-hearts::before {
+  content: "💗 💕 💖 💘 💞";
+  position: fixed;
+  inset: 0;
+  font-size: 22px;
+  opacity: 0.2;
+  animation: float 20s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-100vh); }
+}
+
+.card {
+  width: 90%;
+  max-width: 420px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 80px rgba(255, 0, 120, 0.35);
+  overflow: hidden;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* HERO with eyes */
+.hero {
+  height: 200px;
+  background-image: url("images/eyes.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(0.5px);
+}
+
+/* CONTENT */
+.content {
+  padding: 22px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.media video,
+.media img {
+  width: 100%;
+  border-radius: 18px;
+  display: none;
+  margin: 12px 0;
+}
+
+.controls {
+  display: none;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.controls button {
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: #ff6fae;
+  color: #fff;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.buttons button {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff4f8b;
+  color: white;
+}
+
+#noBtn {
+  background: #eee;
+}
+
+.final-text {
+  margin-top: 14px;
+  font-size: 14px;
+  opacity: 0.85;
+}
